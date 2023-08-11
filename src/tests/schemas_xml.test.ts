@@ -1,5 +1,5 @@
 import { expect, test, it, describe } from 'vitest';
-import { mySchema, NCName } from '../schemas/xml';
+import { mySchema, NCName, QName } from '../schemas/xml';
 
 describe('xml schema', () => {
 
@@ -9,6 +9,19 @@ describe('xml schema', () => {
         })
         it('throws when colonized (:)', () => {
             expect(() => NCName.parse('something:withcolon')).toThrowError();
+        })
+    })
+
+    describe('QName', () => {
+        it('parses strings', () => {
+            expect(QName.parse('hello')).toBe('hello');
+        })
+        it('throws when colons (:) are weird', () => {
+            // some examples maybe too many
+            expect(() => QName.parse('ab:')).toThrowError();
+            expect(() => QName.parse(':cd')).toThrowError();
+            expect(() => QName.parse(':')).toThrowError();
+            expect(() => QName.parse('ab::cd')).toThrowError();
         })
     })
 })

@@ -1,9 +1,14 @@
 import { expect, test, it, describe } from 'vitest';
-import { mySchema } from '../schemas/xml';
+import { mySchema, NCName } from '../schemas/xml';
 
-describe('mySchema', () => {
-    it('parses strings', () => {
+describe('xml schema', () => {
 
-        expect(mySchema.parse('hello')).toBe('hello');
+    describe('NCName', () => {
+        it('parses strings', () => {
+            expect(NCName.parse('hello')).toBe('hello');
+        })
+        it('throws when colonized (:)', () => {
+            expect(() => NCName.parse('something:withcolon')).toThrowError();
+        })
     })
 })

@@ -1,0 +1,31 @@
+{
+  "name": "xbrl-json-processor",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "main": "./dist/xbrl-json-processor.umd.cjs",
+  "module": "./dist/xbrl-json-processor.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/xbrl-json-processor.js",
+      "require": "./dist/xbrl-json-processor.umd.cjs"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "test": "vitest"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.9",
+    "typescript": "^5.0.2",
+    "vite": "^4.4.5",
+    "vite-plugin-dts": "^3.5.1",
+    "vitest": "^0.34.1"
+  }
+}

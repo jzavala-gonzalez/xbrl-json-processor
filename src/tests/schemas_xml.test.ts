@@ -10,6 +10,9 @@ describe('xml schema', () => {
         it('throws when colonized (:)', () => {
             expect(() => NCName.parse('something:withcolon')).toThrowError();
         })
+        it('throws when starts with number', () => {
+            expect(() => NCName.parse('3somethingstartswithnumber')).toThrowError();
+        })
     })
 
     describe('QName', () => {
